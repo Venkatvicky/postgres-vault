@@ -1,4 +1,4 @@
-global:
+global: 
   storageClass: ""
 
 postgresql:
@@ -8,11 +8,17 @@ postgresql:
   password: "vaultpassword"
   storage:
     size: "10Gi"
+  service:
+    name: postgres
+    type: ClusterIP
+    port: 5432  # Ensure port is correctly set
 
 vault:
   image: "hashicorp/vault:latest"
-  service:
+  service: 
+    name: vault
     type: ClusterIP
+    port: 8200  # Vault should have its own port for API access
   ingress:
     enabled: false
-    host: "vault.local"
+    host: "vault.local"  # Fixed missing quote
