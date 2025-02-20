@@ -1,0 +1,18 @@
+global:
+  storageClass: ""
+
+postgresql:
+  image: "postgres:15"
+  database: "vault"
+  user: "vault"
+  password: "vaultpassword"
+  storage:
+    size: "10Gi"
+
+vault:
+  image: "hashicorp/vault:latest"
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false
+    host: "vault.local"
